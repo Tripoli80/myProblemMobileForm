@@ -13,7 +13,7 @@
     <!-- <script src="my.js"></script> -->
 
     <div class="mymodal forma-main">
-      <form name="mymodal-form" class="mymodal-form">
+      <form name="mymodal-form" class="mymodal-form" id="form">
         <div class="mymodal-form__item">
           <label for="mymodal-form__name" class="mymodal-form__lable"
             >Ваше имя*</label
@@ -202,7 +202,7 @@
         console.log("alern");
       });
 
-      refs.btnSendData.addEventListener("click", (e) => {
+      refs.form.addEventListener("submit", (e) => {
         e.preventDefault();
         if (!validator.isMobilePhone(data.phone, ["uk-UA"])) {
           alert("Not valid Phone");
@@ -222,14 +222,12 @@
           form_data.append(key, data[key]);
         }
 
-        const url =
-          "https://797884.mitrid00.web.hosting-test.net/tilda/handler.php/";
+        const url = "https://dev.uait.pro/mihold/tilda/handler.php";
         const fetchData = {
           method: "POST",
           body: form_data,
-          headers: new Headers(),
         };
-        const response = fetch(url, fetchData).then((object) => {
+        const response = window.fetch(url, fetchData).then((object) => {
           console.log(object);
           alert(`${object.status}`);
         });
@@ -239,7 +237,7 @@
           // readData.email="asdas";
           data.name = readData.name;
           data.phone = readData.phone;
-        } else {
+        } else {http://127.0.0.1:5500/index.html
           data.name = "";
           data.phone = "";
         }

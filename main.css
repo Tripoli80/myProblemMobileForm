@@ -1,0 +1,592 @@
+@charset "UTF-8";
+/*
+ * Главный файл стилей.
+ * Все паршалы подключаются сюда.
+ */
+.mymodal-form__input, .mymodal-form__icon, .mymodal-form__check-lable::before, .mymodal-form__box--tel::after, .mymodal-container__icon {
+  -webkit-transition-duration: 250ms;
+          transition-duration: 250ms;
+  -webkit-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+          transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.container {
+  padding: 0 15px;
+  margin: 0 auto;
+  min-width: 320px;
+}
+
+@media screen and (min-width: 480px) {
+  .container {
+    width: 480px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    width: 768px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .container {
+    width: 1280px;
+  }
+}
+
+header,
+footer,
+section {
+  min-width: 320px;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  -webkit-clip-path: inset(100%);
+          clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
+button {
+  display: block;
+  padding: 0;
+  border: none;
+  cursor: pointer;
+}
+
+.nooverlay {
+  overflow-y: hidden;
+}
+
+.a-btn {
+  padding: 20px;
+  display: inline-block;
+  text-decoration: none;
+  background-color: #414b52;
+  margin: 10px;
+  color: #fff;
+  border-radius: 3px;
+}
+
+.flex-btn {
+  outline: auto;
+}
+
+@media screen and (max-width: 767.98px) {
+  .flex-btn {
+    padding: 200px 0 60px 0;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .flex-btn {
+    padding: 60px 0 60px 0;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .flex-btn {
+    padding: 60px 0 60px 0;
+  }
+}
+
+/* Стили для подложки */
+.overlay {
+  /* Скрываем подложку  */
+  opacity: 0;
+  visibility: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 20;
+  -webkit-transition: 0.3s all;
+  transition: 0.3s all;
+}
+
+/* Стили для модальных окон */
+.mymodal {
+  /* Скрываем окна  */
+  opacity: 0;
+  visibility: hidden;
+  height: 100vh;
+  min-width: 320px;
+  /*  Центрируем и задаем z-index */
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 30;
+  /* Должен быть выше чем у подложки*/
+  /*  Побочные стили   */
+  -webkit-box-shadow: 0 3px 10px -0.5px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 3px 10px -0.5px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  padding: 40px;
+  border-radius: 3px;
+  background-color: #ffffff;
+  -webkit-transition: 0.25s all;
+  transition: 0.25s all;
+}
+
+@media screen and (min-width: 480px) {
+  .mymodal {
+    width: 50%;
+    max-width: 450px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .mymodal {
+    width: 450px;
+    max-width: none;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .mymodal {
+    width: 528px;
+    max-width: none;
+  }
+}
+
+.mymodal.forma-main {
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  opacity: 1;
+  visibility: visible;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  min-width: 320px;
+  /*  Побочные стили   */
+  -webkit-box-shadow: 0 3px 10px -0.5px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 3px 10px -0.5px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  padding: 40px;
+  border-radius: 3px;
+  background-color: #ffffff;
+}
+
+@media screen and (min-width: 480px) {
+  .mymodal.forma-main {
+    width: 50%;
+    max-width: 450px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .mymodal.forma-main {
+    width: 450px;
+    max-width: none;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .mymodal.forma-main {
+    width: 528px;
+    max-width: none;
+  }
+}
+
+/* Стили для активных классов подложки и окна */
+.mymodal.active {
+  opacity: 1;
+  visibility: visible;
+  z-index: 99999;
+  height: 100vh;
+  min-width: 320px;
+  /*  Центрируем и задаем z-index */
+  position: fixed;
+  top: 0;
+  right: 0;
+  /*  Побочные стили   */
+  -webkit-box-shadow: 0 3px 10px -0.5px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 3px 10px -0.5px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  padding: 40px;
+  border-radius: 3px;
+  background-color: #ffffff;
+  -webkit-transition: 0.25s all;
+  transition: 0.25s all;
+}
+
+@media screen and (min-width: 480px) {
+  .mymodal.active {
+    width: 50%;
+    max-width: 450px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .mymodal.active {
+    width: 450px;
+    max-width: none;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .mymodal.active {
+    width: 528px;
+    max-width: none;
+  }
+}
+
+.overlay.active {
+  opacity: 1;
+  visibility: visible;
+  z-index: 99955;
+}
+
+/* Стили для кнопки закрытия */
+.mymodal__cross {
+  width: 15px;
+  height: 15px;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  fill: #444;
+  cursor: pointer;
+}
+
+.mymodaltest {
+  background-color: #ffffff;
+}
+
+.mymodaltest a {
+  padding: 20px;
+  display: inline-block;
+  text-decoration: none;
+  background-color: #414b52;
+  margin: 10px;
+  color: #fff;
+  border-radius: 3px;
+}
+
+.mymodal-container__title {
+  font-family: "Titan One";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 1.15em;
+  letter-spacing: 0.03em;
+  color: #e32f02;
+  display: block;
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.mymodal-form__item {
+  position: relative;
+}
+
+.mymodal-form__item + .mymodal-form__item {
+  margin-top: 10px;
+}
+
+.mymodal-form__box {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.mymodal-form__input {
+  width: 100%;
+  height: 40px;
+  border: 1px solid rgba(33, 33, 33, 0.2);
+  border-radius: 4px;
+  padding-left: 35px;
+  -webkit-transition-property: border-color;
+  transition-property: border-color;
+}
+
+.mymodal-form__item:hover .mymodal-form__input,
+.mymodal-form__item:focus .mymodal-form__input {
+  outline: none !important;
+  border-color: #e32f02;
+  fill: #e32f02;
+}
+
+.mymodal-form__input:focus {
+  outline: none !important;
+  border-color: #e32f02;
+  fill: #e32f02;
+}
+
+.mymodal-form__input.mymodal-form__comment {
+  height: auto;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  resize: none;
+}
+
+.mymodal-form__icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  -webkit-transition-property: fill color;
+  transition-property: fill color;
+  fill: #907e82;
+}
+
+.mymodal-form__item:hover .mymodal-form__icon,
+.mymodal-form__item:focus .mymodal-form__icon {
+  outline: none !important;
+  border-color: #e32f02;
+  fill: #e32f02;
+}
+
+.mymodal-form__input:focus + .mymodal-form__icon {
+  outline: none !important;
+  border-color: #e32f02;
+  fill: #e32f02;
+}
+
+.mymodal-form__text {
+  display: block;
+  height: 120px;
+  padding: 16px;
+  resize: none;
+}
+
+.mymodal-form__text::-webkit-input-placeholder {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.14em;
+  letter-spacing: 0.01em;
+  color: rgba(117, 117, 117, 0.5);
+}
+
+.mymodal-form__text:-ms-input-placeholder {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.14em;
+  letter-spacing: 0.01em;
+  color: rgba(117, 117, 117, 0.5);
+}
+
+.mymodal-form__text::-ms-input-placeholder {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.14em;
+  letter-spacing: 0.01em;
+  color: rgba(117, 117, 117, 0.5);
+}
+
+.mymodal-form__text::placeholder {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.14em;
+  letter-spacing: 0.01em;
+  color: rgba(117, 117, 117, 0.5);
+}
+
+.mymodal-form__lable {
+  display: block;
+  text-align: left;
+  margin-bottom: 4px;
+  font-size: 12px;
+  line-height: 1.16em;
+  font-family: "DM Sans";
+  color: #907e82;
+  /* identical to box height */
+  letter-spacing: 0.01em;
+}
+
+.mymodal-form__checkbox {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.mymodal-form__check-lable {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  font-size: 12px;
+  line-height: 14px;
+  margin-right: 5px;
+  line-height: 1.36em;
+  color: #907e82;
+  letter-spacing: 0.03em;
+}
+
+@media screen and (min-width: 768px) {
+  .mymodal-form__check-lable {
+    font-size: 14px;
+    line-height: 24px;
+  }
+}
+
+.mymodal-form__check-lable::before {
+  content: "";
+  margin-right: 5px;
+  display: block;
+  width: 16px;
+  height: 16px;
+  border: 2px solid #e32f02;
+  border-radius: 2px;
+  -webkit-transition-property: fill color background-color border background-image ackground-size background-repeat;
+  transition-property: fill color background-color border background-image ackground-size background-repeat;
+}
+
+.mymodal-form__check:hover + .mymodal-form__check-lable::before,
+.mymodal-form__check:focus + .mymodal-form__check-lable::before {
+  border: 2px solid #e32f02;
+}
+
+.mymodal-form__box--tel::after {
+  content: "";
+  right: 0;
+  top: 0;
+  z-index: 50000;
+  display: none;
+  width: 26px;
+  height: inherit;
+  background-image: url('data:image/svg+xml;utf8,<svg width="18" height="18" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M63.416 51.416c-0-0-0.001-0.001-0.001-0.001l-19.415-19.416 19.415-19.416c0-0 0.001-0 0.001-0.001 0.209-0.209 0.36-0.453 0.457-0.713 0.265-0.711 0.114-1.543-0.458-2.114l-9.172-9.172c-0.572-0.572-1.403-0.723-2.114-0.458-0.26 0.097-0.504 0.248-0.714 0.457 0 0-0 0-0.001 0.001l-19.416 19.416-19.416-19.416c-0-0-0-0-0.001-0.001-0.209-0.209-0.453-0.36-0.713-0.457-0.711-0.266-1.543-0.114-2.114 0.457l-9.172 9.172c-0.572 0.572-0.723 1.403-0.458 2.114 0.097 0.26 0.248 0.505 0.457 0.713 0 0 0 0 0.001 0.001l19.416 19.416-19.416 19.416c-0 0-0 0-0 0.001-0.209 0.209-0.36 0.453-0.457 0.713-0.266 0.711-0.114 1.543 0.458 2.114l9.172 9.172c0.572 0.572 1.403 0.723 2.114 0.458 0.26-0.097 0.504-0.248 0.713-0.457 0-0 0-0 0.001-0.001l19.416-19.416 19.416 19.416c0 0 0.001 0 0.001 0.001 0.209 0.209 0.453 0.36 0.713 0.457 0.711 0.265 1.543 0.114 2.114-0.458l9.172-9.172c0.572-0.572 0.723-1.403 0.458-2.114-0.097-0.26-0.248-0.504-0.457-0.713z" fill="red" stroke="white" stroke-width="0.2"/></svg>');
+  background-position: center;
+  background-size: auto;
+  background-repeat: no-repeat;
+  -webkit-transition-property: fill color background-color border background-image ackground-size background-repeat;
+  transition-property: fill color background-color border background-image ackground-size background-repeat;
+}
+
+.mymodal-form__box-tel-active::after {
+  display: block;
+}
+
+.mymodal-form__check:checked + .mymodal-form__check-lable::before {
+  background-color: #e32f02;
+  background-image: url('data:image/svg+xml;utf8,<svg width="13" height="10" viewBox="0 0 13 10" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.95703 4.75166L1.88825 4.68604L1.81923 4.75141L0.93123 5.59258L0.854858 5.66492L0.930974 5.73753L4.42671 9.07236L4.49574 9.1382L4.56476 9.07236L12.069 1.91352L12.1449 1.84116L12.069 1.76881L11.1873 0.927644L11.1183 0.861826L11.0493 0.927611L4.49577 7.17353L1.95703 4.75166Z" fill="white" stroke="white" stroke-width="0.2"/></svg>');
+  background-position: center;
+  background-size: auto;
+  background-repeat: no-repeat;
+  border: 0;
+}
+
+.mymodal-form__legaltxt {
+  font-family: "DM Sans";
+}
+
+.mymodal-form__legal {
+  /* display: block; */
+  font-family: "DM Sans";
+  font-size: 12px;
+  line-height: 14px;
+  /* identical to box height, or 171% */
+  letter-spacing: 0.03em;
+  color: #e32f02;
+}
+
+@media screen and (min-width: 768px) {
+  .mymodal-form__legal {
+    font-size: 14px;
+    line-height: 24px;
+  }
+}
+
+.mymodal-form__button {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 30px;
+  background-color: #e32f02;
+  width: 200px;
+  height: 50px;
+  border: 0;
+  -webkit-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+          box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+  border-radius: 22px;
+  cursor: pointer;
+}
+
+.btnnoactive {
+  background-color: #907e82;
+}
+
+.mymodal-form__centr {
+  margin-top: 10px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.mymodal-form__buttonname {
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 400;
+  font-family: "Titan One";
+  line-height: 1.875;
+}
+
+.mymodal-container__closed {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  cursor: pointer;
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  top: 8px;
+  right: 8px;
+  border-radius: 50%;
+  background-color: transparent;
+}
+
+.mymodal-container__icon {
+  width: 14px;
+  height: 14px;
+  fill: #907e82;
+  -webkit-transition-property: fill;
+  transition-property: fill;
+}
+
+.mymodal-container__closed:hover .mymodal-container__icon,
+.mymodal-container__closed:focus .mymodal-container__icon {
+  fill: #e32f02;
+}
+
+input[type="checkbox"],
+.visually-hidden {
+  position: absolute;
+  clip: rect(0 0 0 0);
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+}
+/*# sourceMappingURL=main.css.map */

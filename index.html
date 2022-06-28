@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Homework 6</title>
+    <link rel="stylesheet" href="common.css" />
+    <link rel="stylesheet" href="main.css" />
+  </head>
+  <body>
+    <!-- <script src="task-01.js" type="module"></script>-->
+    <!-- <script src="my.js"></script> -->
+
+    <div class="mymodal forma-main">
+      <form name="mymodal-form" class="mymodal-form">
+        <div class="mymodal-form__item">
+          <label for="mymodal-form__name" class="mymodal-form__lable"
+            >Ваше имя*</label
+          >
+          <div class="mymodal-form__box">
+            <input
+              type="text"
+              name="name"
+              class="mymodal-form__input mymodal-form__name"
+              id="mymodal-form__name"
+              placeholder=""
+            />
+            <svg
+              class="mymodal-form__icon"
+              width="18px"
+              height="18px"
+              viewBox="0 0 18 18"
+            >
+              <path
+                d="M9 9C10.6575 9 12 7.6575 12 6C12 4.3425 10.6575 3 9 3C7.3425 3 6 4.3425 6 6C6 7.6575 7.3425 9 9 9ZM9 10.5C6.9975 10.5 3 11.505 3 13.5V14.25C3 14.6625 3.3375 15 3.75 15H14.25C14.6625 15 15 14.6625 15 14.25V13.5C15 11.505 11.0025 10.5 9 10.5Z"
+              />
+            </svg>
+          </div>
+        </div>
+
+        <div class="mymodal-form__item">
+          <label for="mymodal-form__tel" class="mymodal-form__lable"
+            >Номер телефона*</label
+          >
+          <div class="mymodal-form__box mymodal-form__box--tel">
+            <input
+              type="tel"
+              name="phone"
+              class="mymodal-form__input mymodal-form__tel"
+              id="mymodal-form__tel"
+              placeholder="+380"
+            />
+            <svg
+              class="mymodal-form__icon"
+              width="18px"
+              height="18px"
+              viewBox="0 0 18 18"
+            >
+              <path
+                d="M13.996 11.1226L12.1579 10.9127C11.7164 10.862 11.2822 11.014 10.971 11.3252L9.63945 12.6568C7.59144 11.6147 5.91251 9.94296 4.87041 7.8877L6.20922 6.54888C6.5204 6.2377 6.67237 5.80349 6.62171 5.36205L6.41185 3.53836C6.325 2.80745 5.70988 2.25745 4.97173 2.25745H3.71976C2.902 2.25745 2.22175 2.93771 2.2724 3.75547C2.65595 9.93572 7.59868 14.8712 13.7717 15.2548C14.5894 15.3054 15.2697 14.6252 15.2697 13.8074V12.5555C15.2769 11.8245 14.7269 11.2094 13.996 11.1226Z"
+              />
+            </svg>
+          </div>
+        </div>
+        <div class="mymodal-form__item">
+          <label for="mymodal-form__comment" class="mymodal-form__lable">
+            Комментарий
+            <textarea
+              class="mymodal-form__input mymodal-form__comment"
+              id="mymodal-form__comment"
+              name="comment"
+              rows="5"
+              placeholder="Напишите что вас интересует..."
+            ></textarea>
+          </label>
+        </div>
+
+        <div class="mymodal-form__checkbox">
+          <input
+            type="checkbox"
+            class="mymodal-form__check js-check"
+            id="mymodal-form__check"
+            name="mymodal-form__check"
+          />
+          <label for="mymodal-form__check" class="mymodal-form__check-lable">
+            <span class="mymodal-form__legaltxt">
+              Я согласен с новостной рассылкой и принимаю</span
+            >
+          </label>
+          <a class="mymodal-form__legal" href="#">
+            <span>Соглашение</span>
+          </a>
+        </div>
+
+        <button
+          type="submit"
+          class="button--red mymodal-form__button mymodal-form__centr js-btnSendData"
+        >
+          <span class="mymodal-form__buttonname">Отправить</span>
+        </button>
+      </form>
+      <button
+        type="button"
+        class="mymodal-container__closed"
+        data-mymodal-close
+      >
+        <svg
+          class="mymodal-container__icon js-mymodal-close"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M23.954 21.03l-9.184-9.095 9.092-9.174-2.832-2.807-9.09 9.179-9.176-9.088-2.81 2.81 9.186 9.105-9.095 9.184 2.81 2.81 9.112-9.192 9.18 9.1z"
+          />
+        </svg>
+      </button>
+    </div>
+    <div class="overlay js-overlay-mymodal"></div>
+    <script src="https://unpkg.com/validator@latest/validator.min.js"></script>
+    <script>
+      const refs = {
+        mymodalContainer: document.querySelector(".mymodal"),
+        btnOpenmymodal: document.querySelectorAll('a[href="#callb"]'),
+        btnSendData: document.querySelector(".js-btnSendData"),
+        boxAdijment: document.querySelector(".js-check"),
+        telAfter: document.querySelector(".mymodal-form__box--tel"),
+
+        btnmymodalContainerClose: document.querySelector(
+          ".mymodal-container__closed"
+        ),
+        overlay: document.querySelector(".js-overlay-mymodal"),
+        form: document.querySelector(".mymodal-form"),
+
+        name: document.querySelector(".mymodal-form__name"),
+      };
+
+      const nameForm = document.domain;
+      const TEMPSTRING = "mymodal-form-state";
+      const data = {};
+      refs.btnSendData.disabled = true;
+
+      refs.btnSendData.classList.toggle("btnnoactive");
+      refs.form.addEventListener("input", (e) => {
+        if (
+          e.target.name !== "name" &&
+          e.target.name !== "phone" &&
+          e.target.name !== "email"
+        ) {
+          if (e.target.name === "mymodal-form__check") {
+            if (refs.boxAdijment.checked === true) {
+              console.log("включаем кнопку");
+
+              refs.btnSendData.classList.toggle("btnnoactive");
+              refs.btnSendData.disabled = false;
+            } else {
+              console.log("выключаем кнопку");
+              refs.btnSendData.classList.toggle("btnnoactive");
+              refs.btnSendData.disabled = true;
+            }
+
+            console.log("mymodal-form__check", refs.boxAdijment.checked);
+          }
+          return;
+        }
+        const keyName = e.target.name;
+        data[keyName] = e.target.value;
+        localStorage.setItem(TEMPSTRING, JSON.stringify(data));
+      });
+
+      const tempRead = localStorage.getItem(TEMPSTRING);
+      const readData = JSON.parse(tempRead);
+      if (readData) {
+        // readData.email="asdas";
+        data.name = readData.name;
+        data.phone = readData.phone;
+        data.email = readData.email;
+      } else {
+        data.name = "";
+        data.phone = "";
+      }
+      refs.form.name.value = data.name;
+      refs.form.phone.value = data.phone;
+
+      //read data & write data
+      refs.btnOpenmymodal.forEach(function (link) {
+        link.addEventListener("click", (e) => {
+          e.preventDefault();
+          refs.mymodalContainer.classList.toggle("active");
+          refs.overlay.classList.toggle("active");
+        });
+      });
+
+      refs.btnmymodalContainerClose.addEventListener("click", () => {
+        refs.mymodalContainer.classList.toggle("active");
+        refs.overlay.classList.toggle("active");
+      });
+      refs.overlay.addEventListener("click", () => {
+        refs.mymodalContainer.classList.toggle("active");
+        refs.overlay.classList.toggle("active");
+      });
+      refs.boxAdijment.addEventListener("cheked", () => {
+        console.log("alern");
+      });
+
+      refs.btnSendData.addEventListener("click", (e) => {
+        e.preventDefault();
+        if (!validator.isMobilePhone(data.phone, ["uk-UA"])) {
+          alert("Not valid Phone");
+          console.log(
+            "Not valid Phone ",
+            validator.isMobilePhone(data.phone, ["uk-UA"])
+          );
+          refs.telAfter.classList.toggle("mymodal-form__box-tel-active");
+          return;
+        }
+
+        data.url = document.URL;
+        data.name_form = nameForm;
+
+        const form_data = new FormData();
+        for (const key in data) {
+          form_data.append(key, data[key]);
+        }
+
+        const url =
+          "https://797884.mitrid00.web.hosting-test.net/tilda/handler.php/";
+        const fetchData = {
+          method: "POST",
+          body: form_data,
+          headers: new Headers(),
+        };
+        const response = fetch(url, fetchData).then((object) => {
+          console.log(object);
+          alert(`${object.status}`);
+        });
+        // alert(`Спасибо, ${data.name}! Ваша форма отправлена`);
+        // localStorage.clear();
+        if (readData) {
+          // readData.email="asdas";
+          data.name = readData.name;
+          data.phone = readData.phone;
+        } else {
+          data.name = "";
+          data.phone = "";
+        }
+        refs.form.name.value = data.name;
+        refs.form.phone.value = data.phone;
+      });
+    </script>
+  </body>
+</html>
